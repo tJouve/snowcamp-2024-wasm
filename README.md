@@ -1,4 +1,5 @@
 # SnowCamp 2024 ⛄️
+> handson
 
 ## 🇫🇷 Créer des plugins en Rust, TinyGo, ... pour vos applications Go avec WebAssembly et Wazero et Extism
 

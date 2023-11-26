@@ -35,21 +35,6 @@ mv go /usr/local
 EOF
 
 # ------------------------------------
-# Set Environment Variables for Go
-# ------------------------------------
-ENV GOROOT=/usr/local/go
-ENV GOPATH=$HOME/go
-ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-
-RUN <<EOF
-go version
-go install -v golang.org/x/tools/gopls@latest
-go install -v github.com/ramya-rao-a/go-outline@latest
-go install -v github.com/stamblerre/gocode@v1.0.0
-go install -v github.com/mgechev/revive@v1.3.2
-EOF
-
-# ------------------------------------
 # Install TinyGo
 # ------------------------------------
 RUN <<EOF
@@ -127,6 +112,22 @@ mv extism-js-* /usr/local/bin/extism-js
 EOF
 
 USER gitpod
+
+# ------------------------------------
+# Set Environment Variables for Go
+# ------------------------------------
+ENV GOROOT=/usr/local/go
+ENV GOPATH=$HOME/go
+ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+RUN <<EOF
+go version
+go install -v golang.org/x/tools/gopls@latest
+go install -v github.com/ramya-rao-a/go-outline@latest
+go install -v github.com/stamblerre/gocode@v1.0.0
+go install -v github.com/mgechev/revive@v1.3.2
+EOF
+
 
 # Command to run when starting the container
 CMD ["/bin/bash"]

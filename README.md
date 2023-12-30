@@ -39,4 +39,4 @@ PS: Pré-requis (**avant de venir**), vous devrez avoir un compte Docker et un c
 #### Read-write mode
 
 - Fork this repository
-- Then use this link to open it with Gitpod: https://gitpod.io/#https://github.com/<YOUR-GITHUB-HANDLE>/snowcamp-2024-wasm
+- Then use this link to open it with Gitpod: https://gitpod.io/#https://github.com/YOUR-GITHUB-HANDLE/snowcamp-2024-wasm

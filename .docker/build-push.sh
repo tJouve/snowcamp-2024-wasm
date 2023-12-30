@@ -1,13 +1,6 @@
 #!/bin/bash
-#IMAGE_BASE_NAME="snowcamp-2024-wasm-lite"
-#IMAGE_TAG="0.0.1"
-#docker login -u ${DOCKER_USER} -p ${DOCKER_PWD}
-#docker buildx build --platform linux/amd64 --push -t ${DOCKER_USER}/${IMAGE_BASE_NAME}:${IMAGE_TAG} .
-
 set -o allexport; source .env; set +o allexport
 
-IMAGE_BASE_NAME="snowcamp-2024-wasm-lite"
-IMAGE_TAG="0.0.2"
 docker login -u ${DOCKER_USER} -p ${DOCKER_PWD}
 docker buildx build \
 --build-arg="GO_ARCH=${GO_ARCH}" \
@@ -23,6 +16,10 @@ docker buildx build \
 --build-arg="BINARYEN_ARCH=${BINARYEN_ARCH}" \
 --build-arg="BINARYEN_OS=${BINARYEN_OS}" \
 --build-arg="NODE_MAJOR=${NODE_MAJOR}" \
+--build-arg="HELM_VERSION=${HELM_VERSION}" \
+--build-arg="HELM_ARCH=${HELM_ARCH}" \
+--build-arg="K9S_VERSION=${K9S_VERSION}" \
+--build-arg="K9S_ARCH=${K9S_ARCH}" \
 --platform linux/amd64 \
 --push -t ${DOCKER_USER}/${IMAGE_BASE_NAME}:${IMAGE_TAG} .
 

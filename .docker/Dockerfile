@@ -20,6 +20,12 @@ ARG BINARYEN_VERSION=${BINARYEN_VERSION}
 ARG BINARYEN_ARCH=${BINARYEN_ARCH}
 ARG BINARYEN_OS=${BINARYEN_OS}
 
+ARG HELM_VERSION=${HELM_VERSION}
+ARG HELM_ARCH=${HELM_ARCH}
+
+ARG K9S_VERSION=${K9S_VERSION}
+ARG K9S_ARCH=${K9S_ARCH}
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 ENV LANG=en_US.UTF-8
@@ -123,6 +129,29 @@ EOF
 #curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh 
 #rustup target add wasm32-wasi
 #EOF
+
+# ------------------------------------
+# Install Helm
+# ------------------------------------
+RUN <<EOF
+wget https://get.helm.sh/helm-v${HELM_VERSION}-linux-${HELM_ARCH}.tar.gz
+tar xvf helm-v${HELM_VERSION}-linux-${HELM_ARCH}.tar.gz
+mv linux-${HELM_ARCH}/helm /usr/local/bin
+EOF
+
+# ------------------------------------
+# Install K8S tools: kubectl & k9s
+# ------------------------------------
+RUN <<EOF
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+chmod +x kubectl
+mv ./kubectl /usr/local/bin/kubectl
+
+wget https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_${K9S_ARCH}.tar.gz
+tar xvf k9s_${K9S_ARCH}.tar.gz -C /usr/local/bin
+EOF
+
 
 USER gitpod
 

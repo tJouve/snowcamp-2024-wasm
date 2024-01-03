@@ -1,0 +1,8 @@
+go 1.21.1
+
+use (
+	./00-bits-black-magic
+	./01-return-a-string
+)
+
+// go work sync

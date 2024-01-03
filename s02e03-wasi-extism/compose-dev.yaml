@@ -1,0 +1,36 @@
+# docker exec -ti myos /bin/bash
+# docker compose --file compose-dev.yaml build
+# docker compose --file compose-dev.yaml up
+services:
+  app:
+    container_name: wasm-wasi-wazero
+    entrypoint:
+      - sleep
+      - infinity
+    environment:
+      - ABOUT=WebAssembly with Go and TinyGo
+    build:         
+      args:
+        # Change the desired architecture: `WORKSPACE_ARCH=arm64 or amd64`
+        - GO_ARCH=arm64
+        - GO_VERSION=1.21.3
+        - TINYGO_ARCH=arm64
+        - TINYGO_VERSION=0.30.0
+        - EXTISM_ARCH=arm64
+        - EXTISM_VERSION=0.3.3
+        - WASMTIME_VERSION=15.0.1
+        - WASMTIME_ARCH=aarch64-linux
+        - WASMEDGE_VERSION=0.13.5
+        - NODE_DISTRO=linux-arm64
+        - NODE_VERSION=v21.1.0
+        - USER_NAME=bobmorane
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    volumes:
+      #- ~/.ssh:/root/.ssh # be careful to the user
+      - ~/.ssh:/bobmorane/.ssh # be careful to the user
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+

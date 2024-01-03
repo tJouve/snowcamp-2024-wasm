@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="my.css">
+  </head>
+    <!-- go -->
+    <body>
+        <h1>WASM Experiments</h1>
+        <h2>👋 Open the developer tools 😃</h2>
+        <script> 
+            // Load the wasm file
+            let importObject = {
+              wasi_snapshot_preview1: {
+                fd_write: () => 0,
+              }
+            }
+
+            WebAssembly.instantiateStreaming(fetch("main.wasm"), importObject) 
+              .then(({ instance }) => {
+                console.log("📦 Instance", instance)
+                
+                // Call the helloWorld TinyGo function
+                // Get a kind of pair of values
+                const resultPosSize = instance.exports.helloWorld();
+                
+                // Get pos and size of from result
+                const MASK = (2n ** 32n) - 1n;
+                // Extract the values of the pair (using the mask)
+                const stringPos = Number(resultPosSize >> BigInt(32));
+                const stringSize = Number(resultPosSize & MASK);
+                
+                console.log("🤖 Position:", stringPos);
+                console.log("🤖 Size:", stringSize);
+                
+                // helloWorldPosSize:
+                //  pos                              size
+                // 110101⏺000000000000000000000000⏺10110100
+                //
+                // [shift right] helloWorldPosSize >> 32b
+                //  pos                              
+                // 110101⏺
+                //
+                // [& mask] helloWorldPosSize & mask
+                //  mask ⏺111111111111111111111111⏺11111111
+                //  pos                              size
+                //       ⏺000000000000000000000000⏺10110100
+                
+                // "Extract" the buffer 
+                const memory = instance.exports.memory;
+                const completeBufferFromMemory = new Uint8Array(memory.buffer);
+                const extractedBuffer = completeBufferFromMemory.slice(
+                  stringPos, stringPos + stringSize
+                );
+                console.log("🤖 extractedBuffer:", extractedBuffer)
+                
+                // Decode the buffer (to string)
+                const str = new TextDecoder("utf8").decode(extractedBuffer)
+                console.log("🎉", str)
+
+              })
+              .catch(error => {
+                console.log("😡 ouch", error)
+              })
+        </script>
+  </body>
+</html>

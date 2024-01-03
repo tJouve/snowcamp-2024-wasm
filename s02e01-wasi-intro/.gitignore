@@ -1,0 +1,12 @@
+*.wasm
+.DS_Store
+snippets
+notes.md
+#reset.sh
+bin
+obj
+target
+.todo
+tasks
+
+

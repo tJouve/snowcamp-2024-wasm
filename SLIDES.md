@@ -93,6 +93,10 @@ marp: true
 - … 
 
 ---
-# Demos and Exercise
+# 🚀 Exercise 01
+
+- `01-hello-rust.md`
+- `02-hello-go.md`
+
 
 

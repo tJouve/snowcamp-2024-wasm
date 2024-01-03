@@ -3,7 +3,7 @@
 ```bash
 mkdir 02-hello-go
 cd 02-hello-go
-go mod init 02-hello-go
+go mod init hello-go
 touch main.go
 ```
 
@@ -38,12 +38,12 @@ ls -lh *.wasm
 
 ```bash
 wasmtime main.wasm hello world
-wasmer main.wasm hello world
 wasmedge main.wasm hello world
 wazero run main.wasm hello world
 ```
 
 ## Change the source code
+> of the main function
 
 ```go
 // Create a new scanner to read from standard input
@@ -64,3 +64,5 @@ if err := scanner.Err(); err != nil {
     fmt.Println("Error:", err)
 }
 ```
+
+> Re-build and re-run

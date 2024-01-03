@@ -1,11 +1,5 @@
 # 01-hello-rust
 
-> sources: 
-> - https://surma.dev/things/rust-to-webassembly/
-> - https://github.com/bytecodealliance/wasmtime/blob/main/docs/WASI-tutorial.md#from-rust
-> - https://www.jakubkonka.com/2020/04/28/rust-wasi-from-scratch.html
-
-
 ```bash
 cargo new 01-hello-rust --name hello
 
@@ -13,22 +7,24 @@ cargo new 01-hello-rust --name hello
 # If you need a package name to not match the directory name, consider using --name flag.
 ```
 
+Restart the rust-analyzer (Cmd+Shipt+p: rust analyzer - restart server)
+
 ## Build
 
 ```bash
-# if needed (already installed)
-rustup target add wasm32-wasi
 cd 01-hello-rust
 cargo build --target wasm32-wasi
+# the wasm file is generated into:
 # target/wasm32-wasi/debug/hello.wasm
 #cargo build --target=wasm32-wasi --release
 ```
+
+> if needed (already installed): `rustup target add wasm32-wasi``
 
 ## Run
 
 ```bash
 wasmtime target/wasm32-wasi/debug/hello.wasm
-wasmer target/wasm32-wasi/debug/hello.wasm
 wasmedge target/wasm32-wasi/debug/hello.wasm
 wazero run target/wasm32-wasi/debug/hello.wasm
 ```
@@ -49,9 +45,3 @@ fn main() {
 }
 ```
 > Re-build and re-run
-
-## Optim
-
-```
-en rust pour optimiser la taille du fichier wasm tu as les options de compilation opt-level = "z" lto = true
-```

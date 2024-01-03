@@ -38,6 +38,7 @@ RUN <<EOF
 apt-get update 
 apt-get install -y curl wget git build-essential xz-utils bat exa software-properties-common htop openssh-server sshpass gettext
 apt install -y pkg-config libssl-dev
+apt-get install -y clang lldb lld
 ln -s /usr/bin/batcat /usr/bin/bat
 apt-get -y install hey
 EOF

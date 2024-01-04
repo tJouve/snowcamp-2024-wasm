@@ -1,1 +1,29 @@
 si on a du temps jouer avec Fermyon et Wasm Worker server
+
+
+# ------------------------------------
+# Install Spin
+# ------------------------------------
+RUN <<EOF
+mkdir spin-framework
+cd spin-framework
+curl -fsSL https://developer.fermyon.com/downloads/install.sh | bash
+sudo mv spin /usr/local/bin/
+cd ..
+rm -rf spin-framework
+spin templates install --git https://github.com/fermyon/spin --upgrade
+
+spin templates list
+spin plugins update
+EOF
+
+# ------------------------------------
+# Install Wasm Workers Server
+# ------------------------------------
+RUN <<EOF
+curl -fsSL https://workers.wasmlabs.dev/install -o install.sh
+chmod +x install.sh
+./install.sh --local
+sudo mv wws /usr/bin
+rm install.sh
+EOF

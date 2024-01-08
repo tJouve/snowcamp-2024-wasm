@@ -122,7 +122,7 @@ func main() {
 ## `hello` wasm function
 > inspiration: https://github.com/tetratelabs/wazero/blob/main/examples/allocation/tinygo/testdata/greet.go
 
-- Have a look at the source code of the function
+- Have a look at the source code of the `hello` function in `./function/main.go`
 
 ## `hey` wasm function
 - Add a `hey` function

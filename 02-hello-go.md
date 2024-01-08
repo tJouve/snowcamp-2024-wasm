@@ -1,5 +1,7 @@
 # 02-hello-go
 
+## Create a new project with source code
+
 ```bash
 mkdir 02-hello-go
 cd 02-hello-go
@@ -27,6 +29,7 @@ func main() {
 }
 ```
 
+## Build 
 
 ```bash
 tinygo build -o main.wasm -target wasi ./main.go

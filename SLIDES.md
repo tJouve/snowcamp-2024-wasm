@@ -93,10 +93,53 @@ marp: true
 - … 
 
 ---
-# 🚀 Exercise 01
+# 🚀 Exercises
 
 - `01-hello-rust.md`
 - `02-hello-go.md`
+- `03-files-go.md`
+- `04-env-var-go.md`
 
+---
+# Wasm/Wasi: some limitations
 
+---
+# 🚀 Exercise 05
 
+- `05-call-functions-go.md`
+
+---
+# One of the “annoying” limitations
+
+- Only numbers 😮
+  - How to pass string arguments to a Wasm function?
+  - How to return a string as the result of a Wasm function call?
+
+---
+# Solution
+
+## Exchange data with the Shared Memory Buffer
+
+---
+![auto](pictures/wasm-string-1.png)
+
+---
+![auto](pictures/wasm-string-2.png)
+
+---
+![auto](pictures/wasm-string-3.png)
+
+---
+![auto](pictures/wasm-string-4.png)
+
+---
+# To read
+
+- About WASM, WASI and Strings with NodeJS: https://k33g.hashnode.dev/series/wasi-nodejs
+
+---
+# 🚀 Exercise 06
+
+- Make your own CLI
+- Call a function (not always simple)
+---

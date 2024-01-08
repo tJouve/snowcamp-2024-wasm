@@ -2,4 +2,7 @@ go 1.21.3
 
 use (
   ./02-hello-go
+  ./03-files-go
+  ./04-env-var-go
+  ./05-call-functions-go
 )

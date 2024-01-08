@@ -1,8 +1,5 @@
 package main
-/* "vanilla"
-  - add function
-  - hello function
-*/
+
 // ✋ make this function callable from host
 //export add
 func add(x int, y int) int {
@@ -15,4 +12,3 @@ func hello(name string) string {
 }
 
 func main() {}
-

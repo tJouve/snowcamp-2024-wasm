@@ -1,5 +1,7 @@
 # 01-hello-rust
 
+## Create a new project with source code
+
 ```bash
 cargo new 01-hello-rust --name hello
 

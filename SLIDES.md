@@ -133,13 +133,68 @@ marp: true
 ![auto](pictures/wasm-string-4.png)
 
 ---
-# To read
+# 📝 Reading (not today)
 
 - About WASM, WASI and Strings with NodeJS: https://k33g.hashnode.dev/series/wasi-nodejs
 
+---
+# Wasi CLI: DIY 🛠️
+
+- You can develop your own CLI
+- But, you need to handle the limitations
+  - == Develop all the **“plumbing”**
+
+---
+# Wazero Runtime & SDK 🩵🩵🩵
+
+**wazero**: the **zero** dependency WebAssembly runtime for **Go** developers
+
+> - https://wazero.io
+> - https://github.com/tetratelabs/wazero/tree/main/examples
 ---
 # 🚀 Exercise 06
 
 - Make your own CLI
 - Call a function (not always simple)
+
+---
+# But, sometimes, you need more
+
+- Make HTTP requests
+- Make Redis requests from the Wasm module
+- Use MQTT or NATS
+- …
+
+---
+# Host Function?
+
+- A function defined in the Host application
+- For The Wasm program, it’s used as an import function
+
+---
+![auto](pictures/host-functions.png)
+
+---
+# 📝 Reading (not today)
+
+https://k33g.hashnode.dev/series/wazero-first-steps
+
+- Wazero Cookbook - Part One: WASM function & Host application
+- Wazero Cookbook - Part Two: Host functions
+
+---
+# “Helpers”, but…
+
+- ✋ You need to write your own glue
+- For every language you want to support on the Wasm side 😵‍💫
+
+## 🤬 It’s complicated! But…
+
+---
+# There is another way (easier) 👀
+> The cross-language framework for building with WebAssembly
+
+![auto](pictures/extism.svg)
+> by **Dylibso**
+
 ---

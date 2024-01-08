@@ -1,33 +1,3 @@
-# Make you own wasm CLI
-> With the wazero runtime
-
-## Main objectives
-- Load the wasm file: `./function/demo.wasm`
-- Instantiate the wasm module
-- Call the `hello` wasm function
-
-### `hello` wasm function
-> 👋 do not look at the source code of the function now
-
-- Arguments: `strPos uint32, strSize uint32` (position and size of the string into the wasm memory)
-- Return: `uint64` (position and size of the returned value into the wasm memory ... packed in only one `uint64`)
-
-That means:
-- The CLI will copy the string into the wasm memory and get the position and size
-- The CLI will call the wasm function with the position and size
-- The CLI will read the returned value from the wasm memory
-- The CLI will print the returned value
-
-## Create a new project with source code
-> inspiration: https://github.com/tetratelabs/wazero/blob/main/examples/allocation/tinygo/greet.go
-```bash
-mkdir 06-wasm-cli
-cd 06-wasm-cli
-go mod init wasm-cli
-touch main.go
-```
-
-```go
 package main
 
 import (
@@ -104,8 +74,8 @@ func main() {
 	}
 
 	// Extract the position and size of from result
-	valuePosition := uint32(result[0] >> 32) // shift right bit operation
-	valueSize := uint32(result[0]) // AND mask operation
+	valuePosition := uint32(result[0] >> 32)
+	valueSize := uint32(result[0])
 
 	// Read the value from the memory
 	bytes, ok := module.Memory().Read(valuePosition, valueSize)
@@ -117,13 +87,3 @@ func main() {
 	}
 
 }
-```
-
-## `hello` wasm function
-> inspiration: https://github.com/tetratelabs/wazero/blob/main/examples/allocation/tinygo/testdata/greet.go
-
-- Have a look at the source code of the function
-
-## `hey` wasm function
-- Add a `hey` function
-- Update the CLI to call the `hey` function (and the `hello` function)

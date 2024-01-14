@@ -16,6 +16,8 @@ ARG EXTISM_JS_VERSION=${EXTISM_JS_VERSION}
 ARG EXTISM_JS_ARCH=${EXTISM_JS_ARCH}
 ARG EXTISM_JS_OS=${EXTISM_JS_OS}
 ARG NODE_MAJOR=${NODE_MAJOR}
+ARG RUST_TOOLCHAIN_VERSION=${RUST_TOOLCHAIN_VERSION}
+
 ARG BINARYEN_VERSION=${BINARYEN_VERSION}
 ARG BINARYEN_ARCH=${BINARYEN_ARCH}
 ARG BINARYEN_OS=${BINARYEN_OS}
@@ -189,7 +191,8 @@ EOF
 # Install Rust + Wasm Toolchain
 # ------------------------------------
 RUN <<EOF
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN_VERSION}
 export RUSTUP_HOME=~/.rustup
 export CARGO_HOME=~/.cargo
 export PATH=$PATH:$CARGO_HOME/bin

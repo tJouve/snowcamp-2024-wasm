@@ -20,6 +20,7 @@ docker buildx build \
 --build-arg="HELM_ARCH=${HELM_ARCH}" \
 --build-arg="K9S_VERSION=${K9S_VERSION}" \
 --build-arg="K9S_ARCH=${K9S_ARCH}" \
+--build-arg="RUST_TOOLCHAIN_VERSION=${RUST_TOOLCHAIN_VERSION}" \
 --platform linux/amd64 \
 --push -t ${DOCKER_USER}/${IMAGE_BASE_NAME}:${IMAGE_TAG} .
 

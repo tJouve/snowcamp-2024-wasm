@@ -202,3 +202,19 @@ https://k33g.hashnode.dev/series/wazero-first-steps
 > by **Dylibso**
 
 ---
+# 🚀 Exercises 07, 08, 09
+
+- Extism plug-ins with the Extism PDKs
+- Use the Extism CLI
+
+---
+# The Extism Go SDK
+
+
+
+---
+# 🚀 Exercise 10
+
+-- Make your own CLI with the Extism Go SDK
+
+---

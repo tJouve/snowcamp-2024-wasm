@@ -64,6 +64,14 @@ extism call go-plugin.wasm hello \
   --allow-host "*" \
   --set-config '{"url":"https://jsonplaceholder.typicode.com/todos/1"}' \
   --wasi
+
+# info, debug, warn, error
+extism call go-plugin.wasm hello \
+  --input "😀 Hello World 🌍! (from TinyGo)" \
+  --log-level "debug" \
+  --allow-host "*" \
+  --set-config '{"url":"https://jsonplaceholder.typicode.com/todos/1"}' \
+  --wasi
 ```
 
 > We call the `hello` function in the wasm plugin

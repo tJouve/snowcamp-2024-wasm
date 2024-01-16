@@ -116,6 +116,10 @@ res := req.Send()
 // you can get the result with res.Body()
 ```
 
+> - If you want to test the response status , use `res.Status()`
+> - If you want to display the response body, use `res.Body()`
+> - If you want to display the response status, use `strconv.FormatUint(uint64(res.Status()), 10)`
+
 ### How to "return" a value to the Extism CLI
 
 ```go

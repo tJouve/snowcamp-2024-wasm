@@ -1,6 +1,10 @@
 package main
 
-import "github.com/extism/go-pdk"
+import (
+	"strconv"
+
+	"github.com/extism/go-pdk"
+)
 
 // go
 
@@ -22,8 +26,10 @@ func hello() int32 {
 	// use a host function to make a request
 	req := pdk.NewHTTPRequest("GET", url)
 	res := req.Send()
+
+	pdk.Log(pdk.LogInfo, "📝 status: " + strconv.FormatUint(uint64(res.Status()), 10) )
 	
-	pdk.Log(pdk.LogInfo, "📝:"+string(res.Body()))
+	pdk.Log(pdk.LogInfo, "📝 body: "+string(res.Body()))
 	
 	// create output
 	//output := "🎉 Extism is 💜, 🌍: " + url

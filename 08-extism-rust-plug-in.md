@@ -32,7 +32,30 @@ cargo add serde_json
 
 ## Update the source code
 
-<!-- TODO -->
+You need to update the source code of `/src/lib.rs` with the following code:
+
+```rust
+#![no_main]
+
+use extism_pdk::*;
+use serde::Serialize;
+
+#[derive(Serialize)]
+struct Output {
+    pub message: String,
+    pub from: String,
+}
+
+#[plugin_fn]
+pub fn hello(input: String) -> FnResult<Json<Output>> {
+
+    let msg: String = "👋 Hello ".to_string() + &input;
+
+    let output = Output { message: msg , from: "🦀 Rust".to_string()};
+    
+    Ok(Json(output))
+}
+```
 
 ## Build 
 
@@ -50,17 +73,28 @@ ls -lh ./target/wasm32-wasi/release/*.wasm
 extism call ./target/wasm32-wasi/release/hello_extism_rust.wasm \
   hello \
   --input "👩 Jane Doe" \
-  --log-level "info" \
-  --set-config '{"text":"Hello I am Jane Doe 😊"}' \
   --wasi
 echo ""
 
 extism call ./target/wasm32-wasi/release/hello_extism_rust.wasm \
   hello \
   --input "👨 John Doe" \
-  --set-config '{"text":"Hello I am John Doe 👋"}' \
-  --log-level "info" \
   --wasi
 echo ""
 
+```
+
+## Use the config object and display information
+
+- To display information, you can use `info!` macro: 
+  - https://github.com/extism/rust-pdk/blob/main/src/macros.rs#L11
+  - https://github.com/extism/rust-pdk/blob/main/examples/http.rs#L7
+- To use the config object, have a look to https://github.com/extism/rust-pdk/blob/main/src/config.rs#L22
+
+
+Build again and run it again with these new flags:
+
+```bash
+  --log-level "info" \
+  --set-config '{"text":"Hello I am Jane Doe 😊"}' \
 ```

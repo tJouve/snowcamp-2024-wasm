@@ -196,10 +196,69 @@ https://k33g.hashnode.dev/series/wazero-first-steps
 
 ---
 # There is another way (easier) 👀
-> The cross-language framework for building with WebAssembly
 
-![auto](pictures/extism.svg)
-> by **Dylibso**
+### Give super powers to your Golang (but not only) applications
+
+---
+![auto](pictures/01.png)
+
+---
+![auto](pictures/02.png)
+
+---
+# Extism SDKs
+https://extism.org/docs/category/integrate-into-your-codebase
+
+---
+![auto](pictures/03.png)
+
+---
+![auto](pictures/04.png)
+
+---
+![auto](pictures/05.png)
+
+---
+![auto](pictures/06.png)
+
+---
+# Helpers and Ready to use host functions
+
+```golang
+pdk.Input()
+mem := pdk.AllocateString("output")
+pdk.OutputMemory(mem)
+```
+
+```golang
+pdk.Log(pdk.LogInfo,,"")
+req := pdk.NewHTTPRequest("GET", url)
+pdk.OutputMemory(mem)
+...
+```
+
+---
+![auto](pictures/07.png)
+
+---
+# Go-SDK: 
+## Extism 💖 Wazero
+https://github.com/extism/go-sdk
+
+---
+![auto](pictures/08.png)
+
+---
+# How it works?
+
+---
+![auto](pictures/09.png)
+
+---
+![auto](pictures/10.png)
+
+---
+![auto](pictures/11.png)
 
 ---
 # 🚀 Exercises 07, 08, 09
@@ -208,13 +267,48 @@ https://k33g.hashnode.dev/series/wazero-first-steps
 - Use the Extism CLI
 
 ---
-# The Extism Go SDK
+# Create a Host Application
+## Write a CLI with the Extism Go-SDK
+![width:480px height:270px](pictures/goism.png)
 
+---
+![auto](pictures/12.png)
 
 
 ---
 # 🚀 Exercise 10
 
--- Make your own CLI with the Extism Go SDK
+- Make your own CLI with the Extism Go SDK
 
+---
+# 🚀 Exercise 11
+
+- Make an HTTP server to serve wasm functions
+
+---
+# 📝 Reading (not today)
+
+https://k33g.hashnode.dev/series/extism-discovery
+
+- Extism & WebAssembly Plugins
+- Extism, WebAssembly Plugins & Host Functions
+- WebAssembly Plugin in JavaScript with Extism
+- Run Extism WebAssembly plugins from a Go application
+- Writing Wasm MicroServices with Node.js and Extism
+- Write a host function with the Extism Host SDK
+- Writing Host Functions in Go with Extism
+- Create a Webassembly plugin with Extism and Rust
+- WASM Microservices with Extism and Fiber
+- Extism Go SDK is now written on top of Wazero
+
+---
+# 📝 Reading (not today)
+
+## Extism and Java
+
+- Run WASM functions from Vert-x & Kotlin thanks to Extism
+  - https://k33g.hashnode.dev/run-wasm-functions-from-vert-x-kotlin-thanks-to-extism
+
+## Chicory
+- https://github.com/dylibso/chicory
 ---

@@ -4,6 +4,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 
@@ -19,14 +20,22 @@ func main() {
 	wasmFilePath := args[0]
 	functionName := args[1]
 	input := args[2]
+	config := args[3]
+
+	
+	// config is a json string, convert it to a map
+	var configMap map[string]string
+	err := json.Unmarshal([]byte(config), &configMap)
+	if err != nil {
+		fmt.Println("Error converting config to map:", err)
+		os.Exit(1)
+	}
 
 	// Plugin config
-	levelInfo := extism.Info
-
 	pluginConfig := extism.PluginConfig{
 		ModuleConfig: wazero.NewModuleConfig().WithSysWalltime(),
 		EnableWasi:   true,
-		LogLevel:     &levelInfo,
+		LogLevel:     extism.LogLevelInfo,
 	}
 
 	// Plugin manifest
@@ -34,6 +43,8 @@ func main() {
 		Wasm: []extism.Wasm{
 			extism.WasmFile{Path: wasmFilePath},
 		},
+		AllowedHosts: []string{"*"},
+		Config:       configMap,
 	}
 
 	// Create a plugin instance

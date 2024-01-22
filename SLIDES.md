@@ -263,8 +263,11 @@ https://github.com/extism/go-sdk
 ---
 # 🚀 Exercises 07, 08, 09
 
-- Extism plug-ins with the Extism PDKs
-- Use the Extism CLI
+- Create Extism plug-ins with the Extism PDKs
+  - Golang
+  - Rust
+  - JavaScript
+- Use the Extism CLI to call the functions
 
 ---
 # Create a Host Application

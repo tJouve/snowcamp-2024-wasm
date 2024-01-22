@@ -7,5 +7,6 @@ use (
   ./05-call-functions-go
   ./06-wasm-cli
   ./07-extism-go-plug-in
+  ./10-go-host-application
   ./function
 )

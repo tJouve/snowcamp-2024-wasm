@@ -1,4 +1,4 @@
-# 07-Create an Extism plug-ins with TinyGo
+# Create an Extism plug-in with TinyGo
 > - run the plugins with the Extism CLI
 > - use the host functions provided by the PDK
 

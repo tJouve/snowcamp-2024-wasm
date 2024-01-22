@@ -1,9 +1,4 @@
-# Create an Extism plug-ins
-> - run the plugins with the Extism CLI
-> - use the host functions provided by the PDK
-
-
-## Create an Extism Rust plug-in
+# Create an Extism Rust plug-in
 > Writing and reading files
 
 ```bash

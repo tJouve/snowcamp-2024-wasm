@@ -22,7 +22,6 @@ func main() {
 	input := args[2]
 	config := args[3]
 
-	
 	// config is a json string, convert it to a map
 	var configMap map[string]string
 	err := json.Unmarshal([]byte(config), &configMap)

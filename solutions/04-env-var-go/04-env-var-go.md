@@ -11,7 +11,9 @@ touch main.go
 
 Use the source code of the third exercise and use an environment variable to configure the application (to set the name of the text file).
 
-Read:
-- to use the environment variables with Go:https://gobyexample.com/environment-variables
-- to find how to run the wasm file: https://wasmedge.org/docs/start/build-and-run/cli/
+```bash
+wasmedge --dir . --env FILE_NAME="hello.txt" main.wasm
+```
 
+
+> Ref: https://gobyexample.com/environment-variables

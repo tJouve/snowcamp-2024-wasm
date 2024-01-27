@@ -57,6 +57,9 @@ wasmedge main.wasm
 ```
 > Yous should get an error
 
-Read this to fix it: https://wasmedge.org/docs/start/build-and-run/cli/
+```bash
+wasmedge --dir . main.wasm 
+```
 
+> Ref https://wasmedge.org/docs/start/build-and-run/cli/
 

@@ -9,12 +9,14 @@ marp: true
 ---
 # Agenda
 
-- 🚧 work in progress
+- Talk, chat about Wasm/Wasi
+- Some simples exercises
 
 ---
 # 🍊 Gitpod
 
-- 🚧 work in progress
+This project is gitpodified with [gitpod.io](https://gitpod.io). That means you will run a VSCode environment in the browser. The advantage is that everything is already installed.
+
 ---
 
 # Wasm?

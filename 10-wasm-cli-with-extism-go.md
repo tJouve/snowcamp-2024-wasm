@@ -6,7 +6,7 @@ The application will need 4 arguments:
 - a string parameter to pass to the function
 - a json string to pass a config value
 
-The goal is to be able to re-use and call the 3 previus plugins like this:
+The goal is to be able to re-use and call the 3 previous plugins like this:
 
 ```bash
 hostapp \
@@ -73,7 +73,27 @@ pluginManifest := extism.Manifest{
     AllowedHosts: []string{"*"},
     Config:       configMap,
 }
+
+
+// configMap is a map[string]string
+var configMap map[string]string
+err := json.Unmarshal([]byte(config), &configMap)
+if err != nil {
+    fmt.Println("Error converting config to map:", err)
+    os.Exit(1)
+}
 ```
 
-## With JavaScript
 
+## Build and run the application
+
+You can build the application with:
+
+```bash
+go build -ldflags="-s -w"
+ls -lh hostapp
+```
+
+And then call the `hostapp` application
+
+or run directly the code with `go run main.go`

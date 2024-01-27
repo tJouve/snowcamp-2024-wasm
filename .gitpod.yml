@@ -1,7 +1,7 @@
 ---
 #image:
 #  file: .gitpod.dockerfile
-image: k33g/snowcamp-2024-wasm-lite:0.0.6
+image: k33g/snowcamp-2024-wasm-lite:0.0.7
 
 tasks:
   - name: initialize

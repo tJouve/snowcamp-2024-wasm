@@ -121,40 +121,35 @@ curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/insta
 EOF
 
 # ------------------------------------
-# Install Rust + Wasm Toolchain
-# ------------------------------------
-#RUN <<EOF
-#apt install -y pkg-config libssl-dev
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-#export RUSTUP_HOME=~/.rustup
-#export CARGO_HOME=~/.cargo
-#export PATH=$PATH:$CARGO_HOME/bin
-#curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh 
-#rustup target add wasm32-wasi
-#EOF
-
-# ------------------------------------
-# Install Helm
+# Install Spin
 # ------------------------------------
 RUN <<EOF
-wget https://get.helm.sh/helm-v${HELM_VERSION}-linux-${HELM_ARCH}.tar.gz
-tar xvf helm-v${HELM_VERSION}-linux-${HELM_ARCH}.tar.gz
-mv linux-${HELM_ARCH}/helm /usr/local/bin
+mkdir spin-framework
+cd spin-framework
+curl -fsSL https://developer.fermyon.com/downloads/install.sh | bash
+#sudo mv spin /usr/local/bin/
+mv spin /usr/local/bin/
+
+cd ..
+rm -rf spin-framework
+spin templates install --git https://github.com/fermyon/spin --upgrade
+
+spin templates list
+spin plugins update
 EOF
 
 # ------------------------------------
-# Install K8S tools: kubectl & k9s
+# Install Wasm Workers Server
 # ------------------------------------
 RUN <<EOF
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -fsSL https://workers.wasmlabs.dev/install -o install.sh
+chmod +x install.sh
+./install.sh --local
+#sudo mv wws /usr/bin
+mv wws /usr/bin
 
-chmod +x kubectl
-mv ./kubectl /usr/local/bin/kubectl
-
-wget https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_${K9S_ARCH}.tar.gz
-tar xvf k9s_${K9S_ARCH}.tar.gz -C /usr/local/bin
+rm install.sh
 EOF
-
 
 USER gitpod
 

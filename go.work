@@ -9,4 +9,7 @@ use (
   ./07-extism-go-plug-in
   ./10-go-host-application
   ./function
+  ./11-http-server
+  ./12-http-server
+  ./13-http-server
 )

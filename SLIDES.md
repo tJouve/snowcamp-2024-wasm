@@ -315,3 +315,14 @@ https://k33g.hashnode.dev/series/extism-discovery
 ## Chicory
 - https://github.com/dylibso/chicory
 ---
+# WASI Preview 2 Launched
+
+- https://blog.sunfishcode.online/wasi-preview2/
+
+Preview 2 includes two worlds:
+
+- wasi-cli, the "command-line interface" world, which roughly corresponds to POSIX. Files, sockets, clocks, random numbers, etc.
+
+- wasi-http, an HTTP proxy world, organized around requests and responses.
+
+>There are more worlds in development, but for now, the important thing is that we do have multiple worlds included. This means wasi-cli world isn't the only world, or even the primary world. It's just one world, among multiple.

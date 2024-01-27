@@ -5,6 +5,13 @@ marp: true
 # Créer des plugins en Rust, TinyGo, ... 
 ## pour vos applications Go avec WebAssembly et Wazero et Extism
 ### SnowCamp 2024 ⛄️
+---
+# Philippe Charrière
+
+- Old geek
+- Solutions Architect at 🐳 Docker
+- Wasm addict 
+- @k33g_org on 🐦 X
 
 ---
 # Agenda

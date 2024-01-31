@@ -24,6 +24,8 @@ marp: true
 
 This project is gitpodified with [gitpod.io](https://gitpod.io). That means you will run a VSCode environment in the browser. The advantage is that everything is already installed.
 
+=> bandwidth 🥰
+
 ---
 
 # Wasm?
